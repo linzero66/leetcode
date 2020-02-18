@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid rgba(0, 0, 0, 0);
+            box-sizing: border-box;
+        }
+
+        .left,
+        .right {
+            border-right-color: rgba(0, 0, 0, 0);
+            border-bottom-color: rgba(0, 0, 0, 0);
+            transform: rotate(-45deg);
+        }
+
+        #circle.hover .left {
+            border-left: 3px solid #1caffc;
+            border-top: 3px solid #1caffc;
+            animation: left-animation 5s linear;
+        }
+
+        #circle.hover .right {
+            border-left: 3px solid #1caffc;
+            border-top: 3px solid #1caffc;
+            animation: right-animation 5s linear;
+        }
+
+        #circle {
+            top: 200px;
+            left: 40%;
+            width: 200px;
+            height: 200px;
+            border-width: 0;
+            clip: rect(0px, 200px, 200px, 100px);
+        }
+
+        #circle.hover {
+            animation: circle-animation 5s linear;
+        }
+
+        @keyframes circle-animation {
+            0% {
+                clip: rect(0px, 200px, 200px, 100px);
+            }
+
+            100% {
+                clip: auto;
+            }
+        }
+
+        @keyframes left-animation {
+            0% {
+                transform: rotate(-45deg);
+            }
+
+            50% {
+                transform: rotate(135deg);
+            }
+
+            100% {
+                transform: rotate(315deg);
+            }
+        }
+
+        @keyframes right-animation {
+            0% {
+                transform: rotate(-45deg);
+            }
+
+            50% {
+                transform: rotate(135deg);
+            }
+
+            100% {
+                transform: rotate(135deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div hover" id="circle">
+        <div class="right div"></div>
+        <div class="left div"></div>
+    </div>
+</body>
