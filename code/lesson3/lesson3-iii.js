@@ -1,4 +1,3 @@
-
 // 题目描述：
 // 给定一个没有重复数字的序列，返回其所有可能的全排列。
 
@@ -31,10 +30,10 @@
 //     }
 //     for (let i = index; i < arr.length; i++) {
 //         swap(arr, i, index)
-       
+
 //         cur.push(arr[index])
 //         console.log(cur);
-        
+
 //         dfs(cur,index+1,len,arr,res)
 //         cur.pop()
 //         swap(arr, i, index)//回溯原始数组
@@ -46,8 +45,9 @@
 // }
 
 //=========================================好理解得多(回溯)
- export default (nums)=>{
-	let number = []
+export default (nums) => {
+    let number = []
+
 	function backtrack(nums, templist) {
 		if (templist.length === nums.length) {
 			// 组合一次结果
@@ -60,7 +60,7 @@
 			if (templist.includes(num)) continue
 			templist.push(num)
 			backtrack(nums, templist)
-			templist.pop()// 回溯到上一步
+			templist.pop() // 回溯到上一步
 		}
 	}
 	backtrack(nums, [])
