@@ -4,37 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-    
+    <style>
+        body,html{
+            width: 100%;
+            height: 100%;
+        }
+        iframe{
+            width: 1200px;
+            height: 688px;
+        }
+    </style>
 </head>
 <body>
-    <span class="mytooltip" title="个性样式">
-        格式样式:
-    </span>
+    <iframe src="http://localhost:8080/#/qixinbaoIndex"></iframe>
 </body>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-    $(function () {
-        var x = 10;
-        var y = 20;
-        var newtitle = '';
-        $('span.mytooltip').mouseover(function (e) {
-            newtitle = this.title;
-            this.title = '';
-            $('body').append('<div id="mytitle" >' + newtitle + '</div>');
-            $('#mytitle').css({
-                'left': (e.pageX + x + 'px'),
-                'top': (e.pageY + y - 80 + 'px')
-            }).show();
-        }).mouseout(function () {
-            this.title = newtitle;
-            $('#mytitle').remove();
-        }).mousemove(function (e) {
-            $('#mytitle').css({
-                'left': (e.pageX + x + 10 + 'px'),
-                'top': (e.pageY + y - 60 + 'px')
-            }).show();
-        })
-    });
-</script>
+
 </html>
