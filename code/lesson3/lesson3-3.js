@@ -3,7 +3,7 @@
 
 // 给定一个花坛（ 表示为一个数组包含0和1， 其中0表示没种植花， 1 表示种植了花）， 
 // 和一个数 n。 能否在不打破种植规则的情况下种入 n 朵花？ 能则返回True， 不能则返回False。
-
+// （数学建模）
 // 示例 1:
 // 输入: flowerbed = [1, 0, 0, 0, 1], n = 1
 // 输出: True
@@ -15,3 +15,18 @@
 // 1. 数组内已种好的花不会违反种植规则。
 // 2. 输入的数组长度范围为[1, 20000]。
 // 3. n 是非负整数， 且不会超过输入数组的大小。
+
+export default (flowerbed, n) => {
+    let len = flowerbed.length;
+    let growNum = 0;
+    for (let i = 0; i < len; i++) {
+        if (flowerbed[i] == 1) {
+            continue
+        }
+        if (!flowerbed[i + 1] && !flowerbed[i + 1]) {
+            growNum++
+            i++
+        }
+    }  
+    return growNum >= n
+}
