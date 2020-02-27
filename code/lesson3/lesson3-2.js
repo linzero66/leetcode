@@ -1,3 +1,4 @@
+
 export default (deck) => {
     deck.sort()
     if (!deck||deck.length <= 1) {
