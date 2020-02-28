@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body,html{
+        body,
+        html {
             width: 100%;
             height: 100%;
         }
-        iframe{
+
+        iframe {
             width: 1200px;
             height: 688px;
         }
     </style>
 </head>
+
 <body>
-    <iframe src="http://api.falv58.com/Due/#/search?name=%E6%99%93%E6%B3%95&_Token=5ee051f5eefa9dabc15667b42b2558dc"></iframe>
+    <input id="input" type="text">
+    <button id="button">发送</button>
+    <div>收到iframe值：<span id="iframeValue"></span></div>
+    <iframe id="iframe"
+        src="http://localhost:8080/#/search?name=%E6%99%93%E6%B3%95&_Token=5ee051f5eefa9dabc15667b42b2558dc"></iframe>
 </body>
+<script>
+    var iframe = document.getElementById('iframe')
+    iframe.onload = function () {
+        sendMessageToIframe({ name: 11, useid: 111 })
+    }
+    //  sendMessageToIframe.bind(null, '')
+    function sendMessageToIframe(data) {
+        iframe.contentWindow.postMessage(data, '*')
+    }
+
+
+
+    var button = document.getElementById('button')
+    button.addEventListener('click', function () {
+        var testValue = document.getElementById('input').value;
+        sendMessageToIframe(testValue)
+    })
+    window.addEventListener("message", receiveMessageFromIframe, false);
+    function receiveMessageFromIframe(event) {
+        renderIframeValue(event.data)
+    }
+    function renderIframeValue(data) {
+        document.getElementById('iframeValue').innerText = data;
+    }
+
+</script>
 
 </html>
