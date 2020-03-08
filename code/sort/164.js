@@ -9,7 +9,7 @@ export default (arr) => {
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
             }
         }
-        //冒泡排序（每到最后一次和前面一个比，就可以检测出差值，在排序中做）
+        //冒泡排序（每到最后一次和前面一个比，就可以检测出差值，在排序过程中就做出来）
         if (i < len) {
             let interval = arr[i] - arr[i - 1]
             max = max > interval ? max : interval
