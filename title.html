@@ -40,6 +40,10 @@
 
     var button = document.getElementById('button')
     button.addEventListener('click', function () {
+        window.open(
+        "http://xiaofaai.com",
+        "DescriptiveWindowName"
+        );
         var testValue = document.getElementById('input').value;
         sendMessageToIframe(testValue)
     })
