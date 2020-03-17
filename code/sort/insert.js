@@ -11,7 +11,6 @@ let insert = (arr) => {
 }
 
 
-
 //插入排序优化
 let insertOpt = (arr) => {
     for (let i = 1; i < arr.length; i++) {
