@@ -22,15 +22,14 @@ let bubbleOpt = (arr) => {
     let lastExchange = 0; //内层循环标志位
     let len = arr.length;
     let k = len - 1
-    for (let j = 0 ; j < len - 1; j++) {
+    for (let j = 0; j < len - 1; j++) {
         let flag = 0; //优化外层循环  设置标志位
-         
+
         for (let i = 0; i < k; i++) {
             if (arr[i] > arr[i + 1]) {
                 [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]] //每次都做存储的位置交换，性能较低
                 flag = 1
                 lastExchange = i
-                
             }
         }
         k = lastExchange
@@ -44,7 +43,7 @@ let bubbleOpt = (arr) => {
     return arr
 }
 
-
+// 优化1：外层优化
 // 优化2：优化内层循环
 // 在每趟扫描中，记住最后一次交换发生的位置lastExchange，
 // （该位置之后的相邻记录均已有序，因为正在冒的数是当前最小的，如果该数停止往上冒了，且后面没有冒泡的操作了，
@@ -52,8 +51,36 @@ let bubbleOpt = (arr) => {
 // R[lastExchange..n]是有序区。这样，一趟排序可能使当前无序区扩充多个记录，
 // 因此记住最后一次交换发生的位置lastExchange，从而减少排序的趟数
 
+
+//鸡尾酒排序
+let cocktailSort = (arr) => {
+    let len = arr.length - 1
+    let left = 0;
+    let right = len;
+    let swapPos = left;
+    while (left < right) {
+        for (let i = left; i < right; i++) {
+            if (arr[i] > arr[i + 1]) {
+                [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
+                swapPos = i
+            }
+        }
+        right = swapPos
+        for (let i = right; i < left; i--) {
+            if (arr[i] > arr[i + 1]) {
+                [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
+                swapPos = i
+            }
+        }
+        left = swapPos
+    }
+    return arr;
+}
+
+
+
 export {
     bubble,
-    bubbleOpt
-
+    bubbleOpt,
+    cocktailSort
 }
