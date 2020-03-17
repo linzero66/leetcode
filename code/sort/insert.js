@@ -17,11 +17,11 @@ let insertOpt = (arr) => {
         let temporary = arr[i];
         let j;
         for (j = i; j > 0 && arr[j - 1] > temporary; j--) {
-                arr[j] = arr[j - 1]
+                arr[j] = arr[j - 1];
         }
-        arr[j] = temporary
+        arr[j] = temporary;
     }
-    return arr
+    return arr;
 }
 
 export {
