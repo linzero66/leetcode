@@ -1,4 +1,4 @@
-export default (n = 8000) => {
+export default (n = 500000) => {
     let arr = [];
     for (let i = 0; i < n; i++) {
         let num = Math.floor(Math.random() * n);
